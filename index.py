@@ -120,8 +120,9 @@ def get_voice_messge(message):
 		with open(file_name+'.oga', 'wb') as f:
 			f.write(msg.content)
 		text = recognise(file_name+'.wav') 
+		global question
 		question = get_generative_replica(format(text))
-		bot.reply_to(message, question)
+		bot.send_message(message.from_user.id, reply)
 	except Exception as e:
 		bot.send_message(message.from_user.id,  "Повторите еще раз")
 	finally:
